@@ -1,4 +1,4 @@
-package com.agile.engine.challenge.repository.rest.auth
+package com.agile.engine.challenge.repository.rest.images
 
 import com.agile.engine.challenge.core.repository.contract.response.images.GetImagesResponse
 import com.agile.engine.challenge.core.repository.images.GetImagesRepository
@@ -9,8 +9,8 @@ import javax.inject.Inject
 
 
 class GetImagesRestRepository @Inject constructor(
-    val webClient: WebClient,
-    val clientConfig: ClientConfig
+    private val webClient: WebClient,
+    private val clientConfig: ClientConfig
 ): GetImagesRepository {
 
     companion object {
@@ -18,7 +18,7 @@ class GetImagesRestRepository @Inject constructor(
     }
 
     override fun execute(token: String, page: Int): Single<GetImagesResponse> =
-        webClient.getAbs("${clientConfig.url}${path}")
+        webClient.getAbs("${clientConfig.url}$path")
             .putHeader("Authorization", "Bearer $token")
             .addQueryParam("page", "$page")
             .rxSend()

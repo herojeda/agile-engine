@@ -1,6 +1,7 @@
 package com.agile.engine.challenge.infrastructure
 
 import com.agile.engine.challenge.core.repository.auth.ObtainAuthTokenRepository
+import com.agile.engine.challenge.core.repository.images.GetImageDetailRepository
 import com.agile.engine.challenge.core.repository.images.GetImagesRepository
 import com.agile.engine.challenge.infrastructure.model.ClientConfig
 import com.google.inject.AbstractModule
@@ -9,8 +10,9 @@ import com.agile.engine.challenge.infrastructure.model.ConfigurationModel
 import com.agile.engine.challenge.infrastructure.model.SystemConfig
 import com.agile.engine.challenge.infrastructure.model.TasksConfig
 import com.agile.engine.challenge.infrastructure.routers.BaseRouter
-import com.agile.engine.challenge.repository.rest.auth.GetImagesRestRepository
+import com.agile.engine.challenge.repository.rest.images.GetImagesRestRepository
 import com.agile.engine.challenge.repository.rest.auth.ObtainAuthTokenRestRepository
+import com.agile.engine.challenge.repository.rest.images.GetImageDetailRestRepository
 import io.vertx.core.json.JsonObject
 import io.vertx.ext.web.client.WebClientOptions
 import io.vertx.reactivex.core.Vertx
@@ -48,6 +50,7 @@ class MainModule(private val vertx: Vertx, private val config: JsonObject) : Abs
         // Repositories
         bind(ObtainAuthTokenRepository::class.java).to(ObtainAuthTokenRestRepository::class.java)
         bind(GetImagesRepository::class.java).to(GetImagesRestRepository::class.java)
+        bind(GetImageDetailRepository::class.java).to(GetImageDetailRestRepository::class.java)
 
         val routerBinder = Multibinder.newSetBinder(binder(), BaseRouter::class.java)
     }
