@@ -1,8 +1,8 @@
 package com.agile.engine.challenge.repository.rest.auth
 
-import com.agile.engine.challenge.core.repository.ObtainAuthTokenRepository
+import com.agile.engine.challenge.core.repository.auth.ObtainAuthTokenRepository
 import com.agile.engine.challenge.core.repository.contract.request.AuthRequest
-import com.agile.engine.challenge.core.repository.contract.response.AuthResponse
+import com.agile.engine.challenge.core.repository.contract.response.auth.AuthResponse
 import com.agile.engine.challenge.infrastructure.model.ClientConfig
 import io.reactivex.Single
 import io.vertx.reactivex.ext.web.client.WebClient

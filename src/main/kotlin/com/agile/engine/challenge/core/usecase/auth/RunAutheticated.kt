@@ -1,6 +1,6 @@
 package com.agile.engine.challenge.core.usecase.auth
 
-import com.agile.engine.challenge.core.repository.ObtainAuthTokenRepository
+import com.agile.engine.challenge.core.repository.auth.ObtainAuthTokenRepository
 import com.agile.engine.challenge.exception.UnauthorizedException
 import com.agile.engine.challenge.infrastructure.LoggerDelegate
 import io.reactivex.Single
