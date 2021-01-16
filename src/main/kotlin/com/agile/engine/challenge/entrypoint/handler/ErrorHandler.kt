@@ -1,7 +1,7 @@
 package com.agile.engine.challenge.entrypoint.handler
 
 import com.agile.engine.challenge.entrypoint.contract.response.Response
-import com.agile.engine.challenge.entrypoint.exception.ErrorRequestException
+import com.agile.engine.challenge.exception.ErrorRequestException
 import com.agile.engine.challenge.infrastructure.LoggerDelegate
 import io.netty.handler.codec.http.HttpResponseStatus
 import io.reactivex.exceptions.CompositeException

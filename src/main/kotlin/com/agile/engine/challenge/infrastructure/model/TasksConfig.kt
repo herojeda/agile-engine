@@ -1,9 +1,9 @@
 package com.agile.engine.challenge.infrastructure.model
 
 data class TasksConfig(
-    val reloadCache: ReloadCache
+    val reloadCache: ReloadCacheConfig
 )
 
-data class ReloadCache(
+data class ReloadCacheConfig(
     val intervalInSeconds: Long
 )

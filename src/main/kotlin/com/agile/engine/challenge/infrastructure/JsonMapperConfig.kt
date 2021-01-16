@@ -20,7 +20,7 @@ class JsonMapperConfig {
                 this.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
                 this.registerModule(JavaTimeModule())
                 this.registerModule(KotlinModule())
-                this.propertyNamingStrategy = PropertyNamingStrategy.SNAKE_CASE
+                this.propertyNamingStrategy = PropertyNamingStrategy.LOWER_CAMEL_CASE
             }
         }
     }

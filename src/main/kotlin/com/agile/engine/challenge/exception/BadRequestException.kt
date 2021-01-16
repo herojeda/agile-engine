@@ -1,4 +1,4 @@
-package com.agile.engine.challenge.entrypoint.exception
+package com.agile.engine.challenge.exception
 
 import io.netty.handler.codec.http.HttpResponseStatus
 
