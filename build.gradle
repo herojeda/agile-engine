@@ -1,5 +1,7 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.3.72'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '5.0.0'
 }
 
 group 'com.agile.engine.challenge'
@@ -51,4 +53,31 @@ test {
                     "${result.skippedTestCount} skipped)")
     }
 
+}
+
+def mainVerticleName = 'com.agile.engine.challenge.infrastructure.MainVerticle'
+tasks.build.dependsOn tasks.shadowJar
+shadowJar {
+    archiveBaseName = 'agile-engine-challenge'
+    archiveClassifier = 'shadow'
+
+    manifest {
+        attributes 'Main-Verticle': mainVerticleName
+    }
+    mergeServiceFiles {
+        include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
+    }
+}
+
+mainClassName = 'com.agile.engine.challenge.infrastructure.ApplicationKt'
+def watchForChange = 'src/**/*.*'
+def doOnChange = './gradlew classes'
+run {
+    systemProperty "vertx.logger-delegate-factory-class-name", "io.vertx.core.logging.SLF4JLogDelegateFactory"
+    args = [
+            'run', mainVerticleName,
+            "--redeploy=$watchForChange",
+            "--launcher-class=$mainClassName",
+            "--on-redeploy=$doOnChange"
+    ]
 }

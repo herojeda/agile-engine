@@ -12,7 +12,7 @@ fun main() {
     System.setProperty("vertx.logger-delegate-factory-class-name", SLF4JLogDelegateFactory::class.java.name)
 
     val vertx = Vertx.vertx()
-
+    JsonMapperConfig.applyConfig()
     val config = ConfigLoader(vertx).read().blockingGet()
     val injector = Guice.createInjector(MainModule(vertx, config))
     val main = injector.getInstance(MainVerticle::class.java)
