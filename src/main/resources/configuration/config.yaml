@@ -1,3 +1,7 @@
 system:
   http_port: "8080"
   base_path: "/"
+
+tasks:
+  reload_cache:
+    interval_in_seconds: 60

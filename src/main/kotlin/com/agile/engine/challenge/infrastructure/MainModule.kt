@@ -4,6 +4,7 @@ import com.google.inject.AbstractModule
 import com.google.inject.multibindings.Multibinder
 import com.agile.engine.challenge.infrastructure.model.ConfigurationModel
 import com.agile.engine.challenge.infrastructure.model.SystemConfig
+import com.agile.engine.challenge.infrastructure.model.TasksConfig
 import com.agile.engine.challenge.infrastructure.routers.BaseRouter
 import io.vertx.core.json.JsonObject
 import io.vertx.ext.web.client.WebClientOptions
@@ -28,6 +29,7 @@ class MainModule(private val vertx: Vertx, private val config: JsonObject) : Abs
 
         val configModel = config.mapTo(ConfigurationModel::class.java)
         bind(SystemConfig::class.java).toInstance(configModel.system)
+        bind(TasksConfig::class.java).toInstance(configModel.tasks)
 
         // Main
         bind(Vertx::class.java).toInstance(vertx)

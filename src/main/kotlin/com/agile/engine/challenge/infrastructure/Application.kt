@@ -1,5 +1,6 @@
 package com.agile.engine.challenge.infrastructure
 
+import com.agile.engine.challenge.entrypoint.task.ReloadCacheTask
 import com.google.inject.Guice
 import io.vertx.core.logging.SLF4JLogDelegateFactory
 import io.vertx.reactivex.core.Vertx
@@ -19,6 +20,10 @@ fun main() {
     vertx.deployVerticle(main) { result ->
         if (result.succeeded()) {
             logger.info("Application started")
+            injector.getInstance(ReloadCacheTask::class.java)
+                .execute()
+                .subscribe()
+
         } else {
             logger.error("Could not start application", result.cause())
         }
